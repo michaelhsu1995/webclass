@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>javascript</title>
+
+    <style>
+        body{
+            background-color: aliceblue;
+
+        }canvas{
+             width: 800px;
+             height:600px;
+             border: 2px solid black;
+         }
+
+    </style>
+
+</head>
+<body>
+<script>
+    scr="test.js";
+    //alert("Hello world");
+    var age = prompt("enter your age");
+    console.log(typeof(age));
+
+    if(isNaN(age)){
+        alert("your enter a nom valid number");
+    }else{
+        age = Number(age)+1;
+        alert ("Your are about"+ age +"years old soon");
+
+    }
+    age=age+1;
+    console.log(age);
+    try{
+        var age = 10;
+        age = prompt1("enter your age");
+        age = age+1;
+
+
+    }catch(error){
+        alert("your program is error"+error.message);
+
+    }finally{
+        alert("finally we reach here");
+    }
+
+</script>
+
+
+<ul class="items">
+    <li class ="item">1</li>
+    <li class ="item">2</li>
+    <li class ="item">3</li>
+
+    <canvas id="game"></canvas>
+
+</ul>
+</body>
+</html>
