@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>callback</title>
+</head>
+
+<body>
+    <script>
+        // ES5: Full example
+
+        var isMomHappy = true;
+
+        // Promise
+        var willIGetNewPhone = new Promise(
+            function(resolve, reject) {
+                if (isMomHappy) {
+                    var phone = {
+                        brand: 'Tesla',
+                        color: 'Black'
+                    };
+                    resolve(phone); // fulfilled
+                } else {
+                    var reason = new Error('mom is not happy');
+                    reject(reason); // reject
+                }
+
+            }
+        );
+        // 2nd promise
+        var showOff = function(phone) {
+            var message = 'Hey friend, I have a new ' +
+                phone.color + ' ' + phone.brand + ' car!!';
+
+            return Promise.resolve(message);
+        };
+
+        // call our promise
+        var askMom = function() {
+            alert('Before asking Mom');
+            willIGetNewPhone
+                .then(showOff) // chain it here
+                .then(function(fulfilled) {
+                    console.log(fulfilled);
+                    // output: 'Hey friend, I have a new black Samsung phone.'
+                })
+                .catch(function(error) {
+                    // oops, mom don't buy it
+                    console.log(error.message);
+                    // output: 'mom is not happy'
+                });
+            //  console.log('after asking mom'); // log after
+            alert('After asking Mom');
+
+
+        };
+
+        askMom();
+    </script>
+</body>
+
+</html>
